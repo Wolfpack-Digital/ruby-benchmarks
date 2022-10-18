@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-echo 'Welcome to ruby-benchmarks.'
-echo
+chmod 755 shell_scripts/multi_chooser.sh
+source shell_scripts/multi_chooser.sh
 
-echo '---------------'
-echo 'Running csv parser'
-chmod 755 shell_scripts/csv_parser.sh
-source shell_scripts/csv_parser.sh
+prompt_for_multiselect result "csv parser;none"
 
-echo '---------------'
+if  [[ $result == true ]]; then
+  echo '---------------'
+  echo 'Running csv parser'
+  chmod 755 shell_scripts/csv_parser.sh
+  source shell_scripts/csv_parser.sh
+else
+  echo '---------------'
+  echo 'Thanks for stopping by! See you next time.'
+fi
