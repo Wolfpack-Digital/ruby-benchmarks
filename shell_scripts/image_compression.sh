@@ -8,4 +8,4 @@ time ls -R | ruby main.rb
 rm output.png
 rm Gemfile.lock
 
-cd
+cd ../../
