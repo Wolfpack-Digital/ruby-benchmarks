@@ -11,7 +11,7 @@ system_profiler SPSoftwareDataType SPHardwareDataType | grep -E '^\s*Memory: (.*
 echo $1
 echo '---------------'
 
-declare -a options_list=("csv_parser" "none")
+declare -a options_list=("csv_parser" "image_compression" "image_filtering" "none")
 
 function join { local IFS="$1"; shift; echo "$*"; }
 input_options=$(join ";" ${options_list[@]})
@@ -24,6 +24,16 @@ for i in ${!options_list[@]}; do
     echo 'Running csv parser'
     chmod 755 shell_scripts/csv_parser.sh
     source shell_scripts/csv_parser.sh
+  elif [[ ${options_list[$i]} == "image_compression" ]] && [[ ${result[$i]} == true ]]; then
+    echo '---------------'
+    echo 'Running Image compression'
+    chmod 755 shell_scripts/image_compression.sh
+    source shell_scripts/image_compression.sh
+  elif [[ ${options_list[$i]} == "image_filtering" ]] && [[ ${result[$i]} == true ]]; then
+    echo '---------------'
+    echo 'Running Image filtering'
+    chmod 755 shell_scripts/image_filtering.sh
+    source shell_scripts/image_filtering.sh
   elif [[ ${options_list[$i]} == "none" ]] && [[ ${result[$i]} == true ]]; then
     echo '---------------'
     echo 'Thanks for stopping by! See you next time.'
