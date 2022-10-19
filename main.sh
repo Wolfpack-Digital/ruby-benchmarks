@@ -3,22 +3,6 @@
 chmod 755 shell_scripts/multi_chooser.sh
 source shell_scripts/multi_chooser.sh
 
-declare -a options_list=("csv_parser" "none")
-prompt_for_multiselect result "Image compression; CSV Parser"
-
-list=('Image compression' 'CSV parser')
-
-for i in "${!result[@]}"; do
-  echo ${list[$i]}
-  if [[ ${result[$i]} == "" ]]; then
-    echo 'false'
-  else
-    echo 'true'
-  fi
-  echo '-------'
-  echo
-done
-
 echo 'Welcome to ruby-benchmarks.'
 echo
 
@@ -27,11 +11,7 @@ system_profiler SPSoftwareDataType SPHardwareDataType | grep -E '^\s*Memory: (.*
 echo $1
 echo '---------------'
 
-
-echo '---------------'
-echo 'Running csv parser'
-chmod 755 shell_scripts/csv_parser.sh
-source shell_scripts/csv_parser.sh
+declare -a options_list=("csv_parser" "none")
 
 function join { local IFS="$1"; shift; echo "$*"; }
 input_options=$(join ";" ${options_list[@]})
