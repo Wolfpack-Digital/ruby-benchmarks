@@ -19,7 +19,7 @@ function prompt_for_multiselect {
       read -rsn2 key
       if [[ $key = [A ]]; then echo up;    fi;
       if [[ $key = [B ]]; then echo down;  fi;
-    fi 
+    fi
   }
   toggle_option()     {
     local arr_name=$1
