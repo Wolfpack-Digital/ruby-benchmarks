@@ -3,9 +3,9 @@
 cd ruby/image_processing
 
 bundle install
-time ls -R | ruby compress.rb
+time ls -R | ruby filter.rb
 
-rm output.png
+rm -rf processed
 rm Gemfile.lock
 
-cd
+cd ../..
